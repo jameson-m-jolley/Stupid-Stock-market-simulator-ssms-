@@ -1,0 +1,12 @@
+[submodule "third_party/nlohmann"]
+	path = third_party/nlohmann
+	url = https://github.com/nlohmann/json.git
+[submodule "tests/doctest"]
+	path = tests/doctest
+	url = https://github.com/doctest/doctest.git
+[submodule "third_party/spdlog"]
+	path = third_party/spdlog
+	url = https://github.com/gabime/spdlog.git
+[submodule "third_party/wsServer"]
+	path = third_party/wsServer
+	url = https://github.com/Theldus/wsServer.git

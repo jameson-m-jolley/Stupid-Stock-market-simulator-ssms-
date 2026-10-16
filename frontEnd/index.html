@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+    
+</body>
+</html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Stock Market Project Simulator</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="dropdown.css">
+    <script defer src="model.js"></script>
+    <script defer src="view.js"></script>
+    <script defer src="controller.js"></script>
+</head>
+<body>
+
+<div class="intro">
+    <h1 class="logo-header">
+        <span class="logo">Team </span><span class="logo"> Stock </span> <span class="logo"> Market </span><span class="logo"> Simulator.</span>
+    </h1>
+</div>
+
+
+<header class="header">
+    <h1>Stock Market Simulator</h1>
+    <button id="hamburger-btn">&#9776;</button>
+</header>
+<div id="sim-panel" class="closed">
+    <div class="panel-header">
+        <h2>Simulation Controls</h2>
+        <button id="close-panel">&times;</button>
+    </div>
+    <div class="controls">
+        <button id="connect" class="active">Connect</button>
+        <button id="terminate" class="">Terminate</button>
+    </div>
+    <div class="config">
+        <h3>Get/Set Control</h3>
+        <form id="config-form">
+            <select id="command" name="command">
+                <option value="get">get</option>
+                <option value="set">set</option>
+            </select>
+            <input id="command-target" name="target" type="text" value="should_terminate">
+            <input id="command-value" name="value" type="text" value="1">
+            <input id="apply-config" type="submit" value="Apply"></input>
+        </form>
+    </div>
+    <div class="playback-controls">
+        <h3>Playback Controls</h3>
+        <button id="save-sim">Save Simulation</button>
+        <input type="file" id="load-sim" accept=".json">
+        <label for="playback-speed">Speed: </label>
+        <input type="range" id="playback-speed" min="200" max="3000" step="100" value="1000">
+        <span id="speed-display">1000 ms</span>
+    </div>
+</div>
+
+<div class="loader-screen" id="loader-screen">
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+        <div>
+            <span class="loader-letter">W</span>
+            <span class="loader-letter">A</span>
+            <span class="loader-letter">I</span>
+            <span class="loader-letter">T</span>
+            <span class="loader-letter">I</span>
+            <span class="loader-letter">N</span>
+            <span class="loader-letter">G</span>
+            <span class="loader-letter"> </span>
+            <span class="loader-letter">F</span>
+            <span class="loader-letter">O</span>
+            <span class="loader-letter">R</span>
+            <span class="loader-letter"> </span>
+            <span class="loader-letter">S</span>
+            <span class="loader-letter">E</span>
+            <span class="loader-letter">R</span>
+            <span class="loader-letter">V</span>
+            <span class="loader-letter">E</span>
+            <span class="loader-letter">R</span>
+        </div>
+    </div>
+</div>
+
+<div class="container"></div>
+<div class="content">
+    <div class="left-pane">
+        <div class="current-stock-dock">
+            <div class="stock-info">
+                <span class="info-title">Current Price</span>
+                <span id="current-price" class="info-value">—</span>
+            </div>
+            <div class="stock-info">
+                <span class="info-title">Number of Trades</span>
+                <span id="number-of-trades" class="info-value">—</span>
+            </div>
+            <div class="stock-info">
+                <span class="info-title">Most Recent Trade</span>
+                <span id="most-recent-candle" class="info-value">—</span>
+            </div>
+        </div>
+        <div id="log_container"></div>
+    </div>
+    <div class="middle-pane">
+        <div id="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+    <div class="right-pane">
+        <div id="select-dock">
+            <ul id="stock-list" class="stock-list">
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="bottom-pane">
+    <div class="user-pane">
+        <div class="controls">
+            <button id="play-pause">❚❚</button>
+            <button id="begin-end">Begin</button>
+            <select id="mixed">
+                <option value="true">Line On</option>
+                <option value="false" selected>Line Off</option>
+            </select>
+        </div>
+        <div class="user-controls">
+            <h3>User Trading</h3>
+            <form id="user-form">
+                <select id="user-side" name="side">
+                    <option value="ask">Ask</option>
+                    <option value="buy">Buy</option>
+                </select>
+                <label for="quantity">Quantity:</label>
+                <input type="number" name="quantity">
+                <label for="price">Price ($):</label>
+                <input type="number" name="price" step="0.01" min="0">
+                <input id="user-submit" value="Make Trade" type="submit" name="submit">
+            </form>
+        </div>
+        <div class="user-info">
+            <div class="user-stats">
+                <div class="stock-info">
+                    <span class="info-title">Funds</span>
+                    <span id="current-funds" class="info-value">—</span>
+                </div>
+                <div class="stock-info">
+                    <span class="info-title">Current Profit</span>
+                    <span id="current-profit" class="info-value">—</span>
+                </div>
+                <div class="stock-info">
+                    <span class="info-title">Current Shares</span>
+                    <span id="current-shares" class="info-value">—</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
+</html>

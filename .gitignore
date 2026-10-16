@@ -1,0 +1,18 @@
+*.o
+sim
+.vscode/
+*.json
+/logs
+/sim
+/sim.exe
+/tests/socketTest
+/tests/simTest
+/tests/orderBookTest
+/tests/orderTest
+/tests/strategyTest
+/tests/toolsTest
+/tests/walletTest
+
+# Zig build artifacts
+.zig-cache/
+zig-out/

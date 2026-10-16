@@ -1,0 +1,16 @@
+.{
+    .name = .stock_market_simulator,
+    .version = "0.0.0",
+    .fingerprint = 0xb5a18d35209d86b8,
+    .dependencies = .{
+        .spdlog = .{ .path = "third_party/spdlog" },
+        .ws_server = .{ .path = "third_party/wsServer" },
+        .nlohmann_json = .{ .path = "third_party/nlohmann" },
+        .doctest = .{ .path = "tests/doctest" },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        ".",
+    },
+}
